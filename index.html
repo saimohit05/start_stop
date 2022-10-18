@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Demo for instertion</title>
+    <script type="text/javascript">
+    window.onload = function () {
+
+        document.getElementById('start').addEventListener('click',function onClick(event){
+
+            const message = document.getElementById('message');
+            message.innerText = "APPLICATION IS RUNNING";
+
+        })
+
+        document.getElementById('start').addEventListener('click', async _ => {
+            try {
+                const response = await fetch('http://localhost:3000/start', {
+                    method: 'get'
+                });
+                console.log('Completed!', response);
+            } catch (err) {
+                console.error(`Error: ${err}`);
+            }
+        });
+
+        document.getElementById('stop').addEventListener('click',function onClick(event){
+
+                const message = document.getElementById('message');
+                message.innerText = "APPLICATION IS NOT RUNNING";
+
+            })
+
+        document.getElementById('stop').addEventListener('click', async _ => {
+            try {
+                const response = await fetch('http://localhost:3000/kill', {
+                    method: 'get'
+                });
+                console.log('Completed!', response);
+            } catch (err) {
+                console.error(`Error: ${err}`);
+            }
+        });
+
+        document.getElementById('delete').addEventListener('click',function onClick(event){
+
+                const message = document.getElementById('delete_mess');
+                message.innerText = "DELETED SUCCESSFULLY";
+
+            })
+
+        document.getElementById('delete').addEventListener('click', async _ => {
+            try {
+                const response = await fetch('http://localhost:3000/delete', {
+                    method: 'get'
+                });
+                console.log('Completed!', response);
+            } catch (err) {
+                console.error(`Error: ${err}`);
+            }
+        });
+
+        document.getElementsByClassName('total')[0].addEventListener('click', async _ => {
+            try {
+                const response = await fetch('http://localhost:3000/total', {
+                    method: 'get'
+                });
+                console.log('Completed!', response);
+            } catch (err) {
+                console.error(`Error: ${err}`);
+            }
+        });
+    }
+    </script>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+#start {
+  background-color: #7efc008a;
+  height: 50px;
+  width: 110px;
+  position: absolute;
+  margin: -25px 0 0 -50px; 
+  left: 20%;
+  top: 30%;
+  border: none;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+#start:hover {opacity: 1}
+
+
+#stop{
+background-color: #f4511e;
+height: 50px;
+width: 110px;
+position: absolute;
+margin: -25px 0 0 -50px; 
+left: 70%;
+top: 30%;
+border: none;
+color: black;
+padding: 16px 32px;
+text-align: center;
+font-size: 16px;
+opacity: 0.6;
+transition: 0.3s;
+display: inline-block;
+text-decoration: none;
+cursor: pointer;
+}
+
+#stop:hover {opacity: 1}
+
+#delete {
+background-color: #Ff0000;
+height: 50px;
+width: 110px;
+position: absolute;
+margin: -25px 0 0 -50px; 
+left: 20%;
+top: 70%;
+border: none;
+color: black;
+padding: 16px 32px;
+text-align: center;
+font-size: 14px;
+opacity: 0.6;
+transition: 0.3s;
+display: inline-block;
+text-decoration: none;
+cursor: pointer;
+}
+
+#delete:hover {opacity: 1}
+
+#total{
+background-color: #1ebff4;
+height: 50px;
+width: 140px;
+position: absolute;
+margin: -25px 0 0 -50px; 
+left: 70%;
+top: 70%;
+border: none;
+color: black;
+padding: 16px 32px;
+text-align: center;
+font-size: 16px;
+opacity: 0.6;
+transition: 0.3s;
+display: inline-block;
+text-decoration: none;
+cursor: pointer;
+}
+
+#total:hover {opacity: 1}
+
+#message{
+  height: 50px;
+  background-color: #fcfcfcee;
+  width: 200px;
+  position: absolute;
+  margin: -25px 0 0 -50px; 
+  left: 40%;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  top: 45%;
+}
+
+#message1{
+  height: 50px;
+  width: 200px;
+  position: absolute;
+  margin: -25px 0 0 -50px; 
+  left: 42%;
+  color: rgb(236, 11, 11);
+  text-align: center;
+  font-size: 16px;
+  top: 40%;
+}
+ #delete_mess{
+
+height: 20px;
+width: 110px;
+position: absolute;
+margin: -25px 0 0 -50px; 
+left: 15%;
+top: 80%;
+border: none;
+color: black;
+padding: 16px 32px;
+text-align: center;
+font-size: 14px;
+opacity: 0.6;
+transition: 0.3s;
+display: inline-block;
+text-decoration: none;
+cursor: pointer;
+
+ }
+
+</style>
+
+<body>
+    <button id="start">START</button>
+    <div id="message"></div>
+    <div id="message1">STATUS OF APP</div>
+    <div id="delete_mess"></div>
+    <button id="stop">STOP</button><br><br>
+    <button id="delete">DELETE</button><br><br>
+    <button id="total">Total_Count</button>
+</body>
+
+</html>
